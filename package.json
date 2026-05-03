@@ -1,0 +1,29 @@
+{
+  "name": "webdevfinal",
+  "version": "1.0.0",
+  "description": "My Final for webdev.",
+  "main": "JS/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-humphrey/WebDevFinal.git"
+  },
+  "author": "Kayla Humphrey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-humphrey/WebDevFinal/issues"
+  },
+  "homepage": "https://github.com/k-humphrey/WebDevFinal#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  },
+  "dependencies": {
+    "flowbite": "^4.0.1",
+    "node": "^24.15.0"
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
