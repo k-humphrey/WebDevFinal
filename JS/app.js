@@ -1,16 +1,80 @@
-const views = {
-  home: document.getElementById("view-home"),
-  builder: document.getElementById("view-builder"),
-  viewer: document.getElementById("view-viewer"),
-};
 
-function showView(name) {
-  Object.values(views).forEach(v => v.classList.add("hidden"));
-  views[name].classList.remove("hidden");
-}
+let landingPage = document.getElementById('divLandingPage')
+let startButton = document.getElementById('btnStart')
+let builderPage = document.getElementById('divResumeBuilder')
+let viewerPage = document.getElementById('divResumeViewer')
+let homeButton = document.getElementById('btnHome')
+let makerButton = document.getElementById('btnMaker')
+let viewerButton = document.getElementById('btnViewer')
+let navbarDropdown = document.getElementById('navbar-user')
+let componentButton = document.getElementById('btnComponentMaker')
+let basicsSection = document.getElementById('divBasicsSelections')
+let componentSection = document.getElementById('divComponentMaker')
+let componentForm = document.getElementById('divIngredient')
+let formFieldsdiv = document.getElementById('divFormFields')
 
-// Nav buttons
-document.getElementById("btnHome").onclick = () => showView("home");
-document.getElementById("btnBuilder").onclick = () => showView("builder");
-document.getElementById("btnViewer").onclick = () => showView("viewer");
-document.getElementById("btnStart").onclick = () => showView("builder");
+document.addEventListener('DOMContentLoaded', ()=>{
+    //start button goes to resume builder page (only starts in landing page)
+    startButton.addEventListener('click', ()=>{
+        landingPage.classList.add('hidden')
+        navbarDropdown.classList.add('hidden')
+        builderPage.classList.remove('hidden')
+    })
+
+    //home button goes to landing page
+    homeButton.addEventListener('click', ()=>{
+        builderPage.classList.add('hidden')
+        viewerPage.classList.add('hidden')
+        navbarDropdown.classList.add('hidden')
+        landingPage.classList.remove('hidden')
+    })
+
+    //resume maker button goes to resume maker page
+    makerButton.addEventListener('click', ()=>{
+        viewerPage.classList.add('hidden')
+        landingPage.classList.add('hidden')
+        navbarDropdown.classList.add('hidden')
+        builderPage.classList.remove('hidden')
+    })
+
+    //resume viewer button goes to resume viewer page
+    viewerButton.addEventListener('click', ()=>{
+        landingPage.classList.add('hidden')
+        builderPage.classList.add('hidden')
+        navbarDropdown.classList.add('hidden')
+        viewerPage.classList.remove('hidden')
+    })
+
+    componentButton.addEventListener('click', ()=>{
+        basicsSection.classList.add('hidden')
+        componentSection.classList.remove('hidden')
+        componentForm.innerHTML = `<label for="selType">Select Ingredient Type</label>
+        <select id="selType" class="select"><option>...</option></select>`
+
+        fetch(`http://localhost:8000/api/types`)
+        .then(res=> res.json())
+        .then(data =>{
+            let arrTypes = data.message
+
+            arrTypes.forEach(objOption => {
+                selectType = document.getElementById('selType')
+                selectType.innerHTML += `
+                <option value="${objOption.TypeName}">${objOption.TypeName}</option>
+                `
+            })
+
+            selectType.addEventListener('change', (selection)=>{
+                strSelection = selection.target.value
+                //given something like a typename, give me the type blob field to add to the page
+                const formFields = arrTypes.find(obj => obj.TypeName == strSelection)
+                if(formFields){
+                    formFieldsdiv.innerHTML = formFields.TypeFields
+                }
+            })
+    })
+
+    
+})
+
+
+})

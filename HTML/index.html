@@ -109,26 +109,75 @@
 
     <!--Resume Builder page-->
     <div id="divResumeBuilder" class="hidden top-0 start-0 ">
-        <div class="flex flex-col mt-20 justify-items-center items-center">
-            <form>
+        <div class="flex flex-col mt-20 justify-items-center items-center w-full text-center">
+            <h1 class="text-primary">Resume Maker</h1>
+            <p class="text-primary mb-2">To bake your new resume you may upload a previous resume, or type everything in from scratch.</p>
+            <form class="w-3/4">
                 <!--Upload resume pdf, jpg, etc triggers autofill-->
-                <label class="block mb-2.5 text-sm font-medium text-primary" for="file_input">Upload Your Resume</label>
-                <input class="cursor-pointer bg-secondary border border-default-medium text-primary text-sm rounded-base focus:ring-Cherry focus:border-Cherry block w-full shadow-xs placeholder:text-CherryComp" id="file_input" type="file">
-                <div  id="divBasicsSelections" class="grid gap-6 mb-6 md:grid-cols-2">
-                    <!--First name, last name-->
-                    <!--Professional Email-->
-                    <!--Phone number-->
-                    <!--Profiles-->
-                    <!--Next page button-->
+                <div class="flex flex-col items-center justify-items-center">
+                    <label class="mb-2.5 text-sm font-medium text-primary block" for="file_input">Upload Your Resume</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="dropzone-file" class="flex flex-col items-center justify-center h-64 bg-rose-100 border border-dashed border-default-strong rounded-base cursor-pointer hover:bg-neutral-tertiary-medium">
+                            <div class="flex flex-col items-center justify-center text-body pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h3a3 3 0 0 0 0-6h-.025a5.56 5.56 0 0 0 .025-.5A5.5 5.5 0 0 0 7.207 9.021C7.137 9.017 7.071 9 7 9a4 4 0 1 0 0 8h2.167M12 19v-9m0 0-2 2m2-2 2 2"/></svg>
+                                <p class="mb-2 text-sm"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs">SVG, PNG, JPG or PDF (MAX. 800x400px)</p>
+                            </div>
+                                <input id="dropzone-file" type="file" class="hidden" />
+                        </label>
+                    </div>                
                 </div>
-                <div>
-                    <!--Add a component for your resume and select the ones you want to use, a choice to finalize or revise button-->
-                    <!--Button to create resume, pops up a modal that allows you to save to profile(brings you to viewerpage), print, export-->
-
-                </div>
-                    
-
                 
+                <!--Button to autofill-->
+                <button class="btn bg-primary text-primaryText mb-5 p-2">Autofill Inputs</button>
+                <div class="flex flex-col items-center justify-items-center">
+                    <div id="divBasicsSelections" class="grid gap-4 mb-6 md:grid-cols-2 ">
+                        <!--First name, last name-->
+                        <div class="flex flex-col items-center">
+                            <label for="txtFirstName" class="">First Name</label>
+                            <input id="txtFirstName" type="text">
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <label for="txtLastName" class="">Last Name</label>
+                            <input id="txtLastName" type="text">
+                        </div>
+                        <!--Professional Email-->
+                        <div class="flex flex-col items-center">
+                            <label for="txtEmail" class="">Professional Email</label>
+                            <input id="txtEmail" type="text">
+                        </div>
+                        <!--Phone number-->
+                        <div class="flex flex-col items-center">
+                            <label for="txtPhone" class="">Phone Number</label>
+                            <input id="txtPhone" type="tel">
+                        </div>
+                        <div class="flex flex-col items-center col-span-2">
+                            <label for="txtOccupation" class="">What Job are you Applying for?</label>
+                            <input id="txtOccupation" type="text">
+                        </div>
+                        <div class="col-span-2">
+                            <button id="btnComponentMaker"  type="button" class="btn btn-primary text-primaryText bg-primary p-2 w-full">Add Ingredients to my Resume</button> 
+                        </div>
+                    </div>
+                </div>
+                <div id="divComponentMaker" class="hidden">
+                    <!--Go back Button-->
+                    <button id="btnBack" class="btn btn-secondary text-primaryText bg-primary p-2">Go back</button>
+                    <!--Add a component for your resume and select the ones you want to use, a choice to finalize or revise button-->
+                    <p>Create resume "ingredients" below with information such as skills, experience, and education.</p>
+                    <h1>Add an ingredient</h1>
+                    <form>
+                        <div id="divIngredient">
+                            <!--programmatically displayed-->
+                        </div>
+                        <div id="divFormFields">
+                            <!--also programmatically displayed-->
+                        </div>
+                    </form>
+                    <h1>Your Resume Ingredients</h1>
+                    <!--Button to create resume, pops up a modal that allows you to save to profile(brings you to viewerpage), print, export-->
+                </div>
             </form>
         </div>
     </div>
@@ -140,6 +189,6 @@
 
 <!--Scripts-->
 <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-<script src="../JS/server.js"></script>
+<script src="../JS/app.js"></script>
 </body>
 </html>

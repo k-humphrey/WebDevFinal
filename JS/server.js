@@ -1,46 +1,42 @@
+const express = require('express')
+const cors = require('cors')
+const sqlite3 = require('sqlite3').verbose()
+const PORT = 8000
 
-let landingPage = document.getElementById('divLandingPage')
-let startButton = document.getElementById('btnStart')
-let builderPage = document.getElementById('divResumeBuilder')
-let viewerPage = document.getElementById('divResumeViewer')
-let homeButton = document.getElementById('btnHome')
-let makerButton = document.getElementById('btnMaker')
-let viewerButton = document.getElementById('btnViewer')
-let navbarDropdown = document.getElementById('navbar-user')
+const app = express()
+app.use(express.json())
+app.use(cors())
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    //start button goes to resume builder page (only starts in landing page)
-    startButton.addEventListener('click', ()=>{
-        landingPage.classList.add('hidden')
-        navbarDropdown.classList.add('hidden')
-        builderPage.classList.remove('hidden')
+app.listen(PORT, ()=>{
+    console.log(`Sweet Resumes listening on port: ${PORT}`)
+})
+
+
+const dbResumes = new sqlite3.Database('Resumes.db', (err) =>{
+    if(err){
+        console.log("Error opening database:", err.message)
+    }
+    else{
+        console.log("Connected to Resumes.db")
+    }
+})
+//get the types of ingredients
+app.get("/api/types", (req, res )=>{
+    const strQuery = "SELECT * FROM tblTypes"
+    dbResumes.all(strQuery, [], (err, rows) =>{
+        if(err){
+            return res.status(500).json({ outcome:"error", message: err.message})
+        }
+        else{
+            res.status(200).json({ outcome:"success", message: rows})
+        }
     })
+})
 
-    //home button goes to landing page
-    homeButton.addEventListener('click', ()=>{
-        builderPage.classList.add('hidden')
-        viewerPage.classList.add('hidden')
-        navbarDropdown.classList.add('hidden')
-        landingPage.classList.remove('hidden')
-    })
 
-    //resume maker button goes to resume maker page
-    makerButton.addEventListener('click', ()=>{
-        viewerPage.classList.add('hidden')
-        landingPage.classList.add('hidden')
-        navbarDropdown.classList.add('hidden')
-        builderPage.classList.remove('hidden')
-    })
 
-    //resume viewer button goes to resume viewer page
-    viewerButton.addEventListener('click', ()=>{
-        landingPage.classList.add('hidden')
-        builderPage.classList.add('hidden')
-        navbarDropdown.classList.add('hidden')
-        viewerPage.classList.remove('hidden')
-    })
+app.post("/api/", (req, res) =>{
 
-    
 })
 
 
