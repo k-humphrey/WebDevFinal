@@ -5,3 +5,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 @import "flowbite/src/themes/playful";
 
+@layer components {
+  .datepicker-picker {
+    @apply bg-white text-black rounded-lg shadow-lg;
+  }
+  .datepicker-cell.selected{
+     @apply text-primary;
+  }
+  .datepicker-cell.selected:hover {
+    @apply text-primary;
+  }
+
+  .datepicker-cell:hover {
+    @apply text-black;
+  }
+
+  .ql-toolbar.ql-snow {
+    @apply bg-gray-50 border-gray-300 rounded-t-lg !important
+  }
+}

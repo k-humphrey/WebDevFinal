@@ -1,3 +1,4 @@
+const Quill = window.Quill;
 
 let landingPage = document.getElementById('divLandingPage')
 let startButton = document.getElementById('btnStart')
@@ -35,6 +36,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         landingPage.classList.add('hidden')
         navbarDropdown.classList.add('hidden')
         builderPage.classList.remove('hidden')
+        basicsSection.classList.remove('hidden')
+        componentSection.classList.add('hidden')
     })
 
     //resume viewer button goes to resume viewer page
@@ -45,6 +48,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         viewerPage.classList.remove('hidden')
     })
 
+    //when next button is pressed,  dynamically show the selected type and then make a listener for that changing display
     componentButton.addEventListener('click', ()=>{
         basicsSection.classList.add('hidden')
         componentSection.classList.remove('hidden')
@@ -52,23 +56,48 @@ document.addEventListener('DOMContentLoaded', ()=>{
         <select id="selType" class="select"><option>...</option></select>`
 
         fetch(`http://localhost:8000/api/types`)
-        .then(res=> res.json())
+        .then(res => res.json())
         .then(data =>{
             let arrTypes = data.message
-
+            let selectType
             arrTypes.forEach(objOption => {
                 selectType = document.getElementById('selType')
                 selectType.innerHTML += `
                 <option value="${objOption.TypeName}">${objOption.TypeName}</option>
                 `
             })
-
-            selectType.addEventListener('change', (selection)=>{
+            let strSelection
+            selectType.addEventListener('change', (selection) => {
                 strSelection = selection.target.value
-                //given something like a typename, give me the type blob field to add to the page
                 const formFields = arrTypes.find(obj => obj.TypeName == strSelection)
-                if(formFields){
+                
+                if (formFields) {
                     formFieldsdiv.innerHTML = formFields.TypeFields
+                    
+                    if(strSelection == "Education" || strSelection == "Experience") {
+                        new Datepicker(document.getElementById('dateStart'))
+                        new Datepicker(document.getElementById('dateEnd'))
+
+                        setTimeout(() => {
+                            const editorElement = document.getElementById('txtrelevantCoursework')
+                            //Only initialize Quill if the element actually exists on the page
+                            if (editorElement) {
+                                const quill = new Quill('#txtrelevantCoursework', {
+                                    theme: 'snow',
+                                    placeholder: 'Give a bulleted list of full sentences',
+                                    modules: {
+                                        toolbar: [
+                                            ['bold', 'italic', 'underline'],
+                                            [{ list: 'ordered' }, { list: 'bullet' }],
+                                            ['link', 'image']  
+                                        ]
+                                    }
+                                })
+                            }
+                        }, 50) //delay 50s 
+                    } else {
+                        
+                    }
                 }
             })
     })

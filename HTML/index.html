@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Resumes - Login</title>
     <link href="../CSS/output.css" rel="stylesheet">
+    <link href="../node_modules/quill/dist/quill.snow.css" rel="stylesheet" />
 </head>
 <body class="pt-16  pb-24 bg-tertiary">
     <!--Navbar-->
@@ -173,9 +174,13 @@
                         </div>
                         <div id="divFormFields">
                             <!--also programmatically displayed-->
+                            
                         </div>
+                        <button id="btnReviseComponent" type="button" class="bg-rose-100 font-bold text-primary w-1/2 mt-2 mb-2">Revise with AI</button>
+                        <button id="btnSubmitComponent" type="button" class="bg-rose-100 font-bold text-primary w-1/2">Submit</button>
                     </form>
-                    <h1>Your Resume Ingredients</h1>
+                    <h1>Select the ingredients you will use for your resume!</h1>
+                    <!--check box of ingredients (components to be used in resume)-->
                     <!--Button to create resume, pops up a modal that allows you to save to profile(brings you to viewerpage), print, export-->
                 </div>
             </form>
@@ -188,7 +193,9 @@
     </div>
 
 <!--Scripts-->
+<script src="../node_modules/quill/dist/quill.js"></script>
 <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-<script src="../JS/app.js"></script>
+<script src="../JS/app.js" type="module"></script>
+
 </body>
 </html>
