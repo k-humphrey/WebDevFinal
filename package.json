@@ -5,7 +5,10 @@
   "main": "JS/server.js",
   "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node JS/server.js",
+    "css:build": "tailwindcss -c CSS/tailwind.config.js -i CSS/input.css -o CSS/output.css",
+    "css:watch": "tailwindcss -c CSS/tailwind.config.js -i CSS/input.css -o CSS/output.css --watch",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,9 @@
     "tailwindcss": "^3.4.19"
   },
   "dependencies": {
+    "@google/genai": "^1.51.0",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "flowbite": "^4.0.1",
     "node": "^24.15.0",

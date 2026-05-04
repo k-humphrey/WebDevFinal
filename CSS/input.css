@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
 @import "flowbite/src/themes/playful";
 
 @layer components {
@@ -22,5 +21,44 @@
 
   .ql-toolbar.ql-snow {
     @apply bg-gray-50 border-gray-300 rounded-t-lg !important
+  }
+
+  .ql-container.ql-snow {
+    @apply min-h-48 rounded-b-lg border-gray-300 bg-white text-base !important
+  }
+
+  .ql-editor {
+    @apply min-h-48 text-gray-900;
+  }
+
+  .rich-text-content ul {
+    @apply list-disc pl-5;
+  }
+
+  .rich-text-content ol {
+    @apply list-decimal pl-5;
+  }
+
+  .rich-text-content p {
+    @apply mb-1;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  nav,
+  #appStatus,
+  #divLandingPage,
+  #divAuthPage,
+  #divResumeBuilder {
+    display: none !important;
+  }
+
+  #divResumeViewer {
+    display: block !important;
   }
 }

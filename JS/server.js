@@ -1,43 +1,20 @@
-const express = require('express')
-const cors = require('cors')
-const sqlite3 = require('sqlite3').verbose()
+const { createApp } = require('./server/app')
+const { initializeDatabase } = require('./server/db')
 
-const PORT = 8000
+const PORT = Number(process.env.PORT || 8000)
 
-const app = express()
-app.use(express.json())
-app.use(cors())
+async function startServer() {
+  try {
+    await initializeDatabase()
+    const app = createApp()
 
-app.listen(PORT, ()=>{
-    console.log(`Sweet Resumes listening on port: ${PORT}`)
-})
-
-
-const dbResumes = new sqlite3.Database('Resumes.db', (err) =>{
-    if(err){
-        console.log("Error opening database:", err.message)
-    }
-    else{
-        console.log("Connected to Resumes.db")
-    }
-})
-//get the types of ingredients
-app.get("/api/types", (req, res )=>{
-    const strQuery = "SELECT * FROM tblTypes"
-    dbResumes.all(strQuery, [], (err, rows) =>{
-        if(err){
-            return res.status(500).json({ outcome:"error", message: err.message})
-        }
-        else{
-            res.status(200).json({ outcome:"success", message: rows})
-        }
+    app.listen(PORT, () => {
+      console.log(`Sweet Resumes listening on port: ${PORT}`)
     })
-})
+  } catch (err) {
+    console.error('Failed to start Sweet Resumes:', err)
+    process.exit(1)
+  }
+}
 
-
-
-app.post("/api/", (req, res) =>{
-
-})
-
-
+startServer()

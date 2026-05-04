@@ -3,199 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweet Resumes - Login</title>
-    <link href="../CSS/output.css" rel="stylesheet">
-    <link href="../node_modules/quill/dist/quill.snow.css" rel="stylesheet" />
+    <title>Sweet Resumes</title>
+    <link href="/CSS/output.css" rel="stylesheet">
+    <link href="/node_modules/quill/dist/quill.snow.css" rel="stylesheet">
 </head>
-<body class="pt-16  pb-24 bg-tertiary">
-    <!--Navbar-->
-    <nav class="bg-primary fixed w-full pb-12 z-20 top-0 start-0 border-b border-default">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="Cherry.png" class="h-7" alt="Sweet Resumes Logo" />
-        <span class="self-center text-xl text-CherryComp font-semibold whitespace-nowrap">Sweet Resumes</span>
-    </a>
-    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <button type="button" class="flex text-sm rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-            <span class="sr-only">Open user menu</span>
-            <img class="w-8 h-8 rounded-full" src="Cherry.png" alt="user photo">
-        </button>
-        <!-- Dropdown menu -->
-        <div class="z-50 hidden bg-tertiary border border-default-medium rounded-base shadow-lg w-44" id="user-dropdown">
-            <div class="px-4 py-3 text-sm border-b border-default">
-            <span class="block text-primary font-medium">Joseph McFall</span>
-            <span class="block text-primary truncate">name@flowbite.com</span>
+<body class="min-h-screen bg-tertiary pt-20 text-gray-900">
+    <nav class="fixed start-0 top-0 z-20 w-full border-b border-rose-200 bg-primary">
+        <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+            <button id="btnHome" class="flex items-center gap-3">
+                <img src="/HTML/Cherry.png" class="h-8 w-8" alt="Sweet Resumes Logo">
+                <span class="text-xl font-semibold text-primaryText">Sweet Resumes</span>
+            </button>
+
+            <div id="navbar-user" class="hidden items-center gap-5 md:flex">
+                <button id="btnMaker" class="text-sm font-medium text-primaryText hover:text-secondary">Resume Maker</button>
+                <button id="btnViewer" class="text-sm font-medium text-primaryText hover:text-secondary">Resume Viewer</button>
+                <div class="text-right text-xs text-primaryText">
+                    <p id="userDisplayName" class="font-semibold">Guest</p>
+                    <p id="userDisplayEmail"></p>
+                </div>
+                <button id="btnLogout" class="rounded border border-primaryText px-3 py-2 text-sm text-primaryText hover:bg-primaryText hover:text-primary">Sign out</button>
             </div>
-            <ul class="p-2 text-sm text-primary font-medium" aria-labelledby="user-menu-button">
-            <li>
-                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-secondary  hover:text-primary rounded">Settings</a>
-            </li>
-            <li>
-                <a href="#" class="inline-flex items-center w-full p-2 hover:bg-secondary hover:text-primary rounded">Sign out</a>
-            </li>
-            </ul>
         </div>
-        <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-user" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
-        </button>
-    </div>
-    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-        <li>
-            <button id="btnHome" class="text-primaryText hover:text-Cherry">Home</button>
-        </li>
-        <li>
-            <button id="btnMaker" class="text-primaryText hover:text-Cherry">Resume Maker</button>
-        </li>
-        <li>
-            <button id="btnViewer" class="text-primaryText hover:text-Cherry">Resume Viewer</button>
-        </li>
-        </ul>
-    </div>
-    </div>
     </nav>
-    <!--Landing Page Content-->
-    <div id="divLandingPage" class="flex flex-col items-center justify-center text-center gap-4 mt-20">
-        <h1 class="mx-4 text-4xl font-bold tracking-tight text-CherryComp md:text-5xl lg:text-6xl">Need Help Cooking up a Sweet New Resume?</h1>
-        <p class="mx-6 text-lg font-normal text-primary lg:text-xl sm:px-16 xl:px-48">We've got you covered.</p>
-        <p class="mx-6 text-lg font-normal text-primary lg:text-xl sm:px-16 xl:px-48">Take a sneak peak at our features below:</p>
 
-        
-        <!--Carosel of cards-->
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-base md:h-96">
-                <!-- Item 1 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="Cherry.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Smart Resume Builder">
-                </div>
-                <!-- Item 2 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="Cherry.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Save multiple resumes">
-                </div>
-                <!-- Item 3 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="Cherry.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="AI assisted content">
-                </div>
+    <main class="mx-auto max-w-screen-xl px-4 pb-10">
+        <p id="appStatus" class="min-h-6 text-sm font-medium"></p>
+
+        <section id="divLandingPage" class="grid gap-8 py-12 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+            <div>
+                <h1 class="max-w-3xl text-4xl font-bold tracking-tight text-CherryComp md:text-6xl">Need help cooking up a sweet new resume?</h1>
+                <p class="mt-4 max-w-2xl text-lg text-gray-800">Build reusable resume ingredients, revise your wording with AI, preview the finished resume, and export it as a PDF through your browser print dialog.</p>
+                <button id="btnStart" class="mt-6 rounded bg-primary px-5 py-3 font-semibold text-primaryText hover:bg-red-950">Start Cooking Today</button>
             </div>
-            <!-- Slider indicators -->
-            <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                <button type="button" class="w-3 h-3 rounded-base" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                <button type="button" class="w-3 h-3 rounded-base" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+            <div class="rounded border border-rose-200 bg-white p-6 shadow-sm">
+                <h2 class="text-lg font-semibold text-primary">What this app supports</h2>
+                <ul class="mt-4 space-y-3 text-sm text-gray-700">
+                    <li>Secure registration and login backed by SQLite sessions.</li>
+                    <li>AI revision for resume bullets through a server-side Gemini call.</li>
+                    <li>Resume preview with browser PDF export using Print.</li>
+                </ul>
             </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
-        </div>
-        <button id="btnStart" class="inline-flex items-center text-center text-primary bg-tertiary ring-CherryComp border border-primary rounded-full hover:ring-4 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-base px-5 py-3 focus:outline-none">Start Cooking Today!</button>
-        
-        
+        </section>
 
-    </div>
-
-
-    <!--Resume Builder page-->
-    <div id="divResumeBuilder" class="hidden top-0 start-0 ">
-        <div class="flex flex-col mt-20 justify-items-center items-center w-full text-center">
-            <h1 class="text-primary">Resume Maker</h1>
-            <p class="text-primary mb-2">To bake your new resume you may upload a previous resume, or type everything in from scratch.</p>
-            <form class="w-3/4">
-                <!--Upload resume pdf, jpg, etc triggers autofill-->
-                <div class="flex flex-col items-center justify-items-center">
-                    <label class="mb-2.5 text-sm font-medium text-primary block" for="file_input">Upload Your Resume</label>
-                    <div class="flex items-center justify-center w-full">
-                        <label for="dropzone-file" class="flex flex-col items-center justify-center h-64 bg-rose-100 border border-dashed border-default-strong rounded-base cursor-pointer hover:bg-neutral-tertiary-medium">
-                            <div class="flex flex-col items-center justify-center text-body pt-5 pb-6">
-                                <svg class="w-8 h-8 mb-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h3a3 3 0 0 0 0-6h-.025a5.56 5.56 0 0 0 .025-.5A5.5 5.5 0 0 0 7.207 9.021C7.137 9.017 7.071 9 7 9a4 4 0 1 0 0 8h2.167M12 19v-9m0 0-2 2m2-2 2 2"/></svg>
-                                <p class="mb-2 text-sm"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs">SVG, PNG, JPG or PDF (MAX. 800x400px)</p>
-                            </div>
-                                <input id="dropzone-file" type="file" class="hidden" />
+        <section id="divAuthPage" class="hidden py-10">
+            <div class="mx-auto max-w-md rounded border border-rose-200 bg-white p-6 shadow-sm">
+                <h1 class="text-2xl font-bold text-primary">Sign in or create an account</h1>
+                <form id="frmAuth" class="mt-6 space-y-4">
+                    <div class="flex gap-4 text-sm">
+                        <label class="flex items-center gap-2">
+                            <input type="radio" name="authMode" value="login" checked>
+                            Sign in
                         </label>
-                    </div>                
-                </div>
-                
-                <!--Button to autofill-->
-                <button class="btn bg-primary text-primaryText mb-5 p-2">Autofill Inputs</button>
-                <div class="flex flex-col items-center justify-items-center">
-                    <div id="divBasicsSelections" class="grid gap-4 mb-6 md:grid-cols-2 ">
-                        <!--First name, last name-->
-                        <div class="flex flex-col items-center">
-                            <label for="txtFirstName" class="">First Name</label>
-                            <input id="txtFirstName" type="text">
-                        </div>
-
-                        <div class="flex flex-col items-center">
-                            <label for="txtLastName" class="">Last Name</label>
-                            <input id="txtLastName" type="text">
-                        </div>
-                        <!--Professional Email-->
-                        <div class="flex flex-col items-center">
-                            <label for="txtEmail" class="">Professional Email</label>
-                            <input id="txtEmail" type="text">
-                        </div>
-                        <!--Phone number-->
-                        <div class="flex flex-col items-center">
-                            <label for="txtPhone" class="">Phone Number</label>
-                            <input id="txtPhone" type="tel">
-                        </div>
-                        <div class="flex flex-col items-center col-span-2">
-                            <label for="txtOccupation" class="">What Job are you Applying for?</label>
-                            <input id="txtOccupation" type="text">
-                        </div>
-                        <div class="col-span-2">
-                            <button id="btnComponentMaker"  type="button" class="btn btn-primary text-primaryText bg-primary p-2 w-full">Add Ingredients to my Resume</button> 
-                        </div>
+                        <label class="flex items-center gap-2">
+                            <input type="radio" name="authMode" value="register">
+                            Register
+                        </label>
                     </div>
-                </div>
-                <div id="divComponentMaker" class="hidden">
-                    <!--Go back Button-->
-                    <button id="btnBack" class="btn btn-secondary text-primaryText bg-primary p-2">Go back</button>
-                    <!--Add a component for your resume and select the ones you want to use, a choice to finalize or revise button-->
-                    <p>Create resume "ingredients" below with information such as skills, experience, and education.</p>
-                    <h1>Add an ingredient</h1>
-                    <form>
-                        <div id="divIngredient">
-                            <!--programmatically displayed-->
+                    <div>
+                        <label for="authEmail" class="mb-1 block text-sm font-medium">Email</label>
+                        <input id="authEmail" name="email" type="email" autocomplete="email" required class="w-full rounded border border-gray-300 p-2">
+                    </div>
+                    <div>
+                        <label for="authPassword" class="mb-1 block text-sm font-medium">Password</label>
+                        <input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required class="w-full rounded border border-gray-300 p-2">
+                    </div>
+                    <button class="w-full rounded bg-primary px-4 py-2 font-semibold text-primaryText hover:bg-red-950">Continue</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="divResumeBuilder" class="hidden py-6">
+            <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+                <div class="space-y-6">
+                    <form id="frmBasics" class="rounded border border-rose-200 bg-white p-5 shadow-sm">
+                        <h1 class="text-xl font-bold text-primary">Basic information</h1>
+                        <div class="mt-4 grid gap-4 md:grid-cols-2">
+                            <div>
+                                <label for="txtFirstName" class="mb-1 block text-sm font-medium">First Name</label>
+                                <input id="txtFirstName" name="firstName" type="text" required class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div>
+                                <label for="txtLastName" class="mb-1 block text-sm font-medium">Last Name</label>
+                                <input id="txtLastName" name="lastName" type="text" required class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div>
+                                <label for="txtPhone" class="mb-1 block text-sm font-medium">Phone Number</label>
+                                <input id="txtPhone" name="phoneNumber" type="tel" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div>
+                                <label for="txtOccupation" class="mb-1 block text-sm font-medium">Target Job</label>
+                                <input id="txtOccupation" name="occupation" type="text" class="w-full rounded border border-gray-300 p-2">
+                            </div>
                         </div>
-                        <div id="divFormFields">
-                            <!--also programmatically displayed-->
-                            
-                        </div>
-                        <button id="btnReviseComponent" type="button" class="bg-rose-100 font-bold text-primary w-1/2 mt-2 mb-2">Revise with AI</button>
-                        <button id="btnSubmitComponent" type="button" class="bg-rose-100 font-bold text-primary w-1/2">Submit</button>
+                        <button class="mt-4 rounded bg-primary px-4 py-2 font-semibold text-primaryText hover:bg-red-950">Save basics</button>
                     </form>
-                    <h1>Select the ingredients you will use for your resume!</h1>
-                    <!--check box of ingredients (components to be used in resume)-->
-                    <!--Button to create resume, pops up a modal that allows you to save to profile(brings you to viewerpage), print, export-->
+
+                    <form id="frmComponent" class="rounded border border-rose-200 bg-white p-5 shadow-sm">
+                        <h2 class="text-xl font-bold text-primary">Add an ingredient</h2>
+                        <div class="mt-4 grid gap-4 md:grid-cols-2">
+                            <div>
+                                <label for="selType" class="mb-1 block text-sm font-medium">Type</label>
+                                <select id="selType" name="typeName" required class="w-full rounded border border-gray-300 p-2">
+                                    <option value="">Choose a type</option>
+                                </select>
+                            </div>
+                            <div data-component-field="title">
+                                <label for="txtTitle" class="mb-1 block text-sm font-medium">Title</label>
+                                <input id="txtTitle" name="title" type="text" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div data-component-field="organization">
+                                <label for="txtOrganization" class="mb-1 block text-sm font-medium">Organization</label>
+                                <input id="txtOrganization" name="organization" type="text" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div data-component-field="location">
+                                <label for="txtLocation" class="mb-1 block text-sm font-medium">Location</label>
+                                <input id="txtLocation" name="location" type="text" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div data-component-field="startDate">
+                                <label for="dateStart" class="mb-1 block text-sm font-medium">Start</label>
+                                <input id="dateStart" name="startDate" type="month" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                            <div data-component-field="endDate">
+                                <label for="dateEnd" class="mb-1 block text-sm font-medium">End</label>
+                                <input id="dateEnd" name="endDate" type="month" class="w-full rounded border border-gray-300 p-2">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label for="txtContent" class="mb-1 block text-sm font-medium">Details or bullets</label>
+                            <input id="txtContent" name="content" type="hidden">
+                            <div id="quillEditor" class="min-h-48 bg-white"></div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-3">
+                            <button id="btnReviseComponent" type="button" class="rounded border border-primary px-4 py-2 font-semibold text-primary hover:bg-rose-50">Revise with AI</button>
+                            <button id="btnSubmitComponent" class="rounded bg-primary px-4 py-2 font-semibold text-primaryText hover:bg-red-950">Save ingredient</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-    </div>
 
-    <!--Resume Viewer Page-->
-    <div id="divResumeViewer" class="hidden">
-        <p1>Resume Viewer</p1>
-    </div>
+                <div class="space-y-6">
+                    <section class="rounded border border-rose-200 bg-white p-5 shadow-sm">
+                        <h2 class="text-xl font-bold text-primary">Saved ingredients</h2>
+                        <div id="componentList" class="mt-4 max-h-[32rem] space-y-3 overflow-y-auto pr-2"></div>
+                    </section>
+                    <section class="rounded border border-rose-200 bg-white p-5 shadow-sm">
+                        <h2 class="text-xl font-bold text-primary">Live preview</h2>
+                        <div id="resumePreview" class="mt-4 max-h-[44rem] overflow-y-auto pr-2"></div>
+                    </section>
+                </div>
+            </div>
+        </section>
 
-<!--Scripts-->
-<script src="../node_modules/quill/dist/quill.js"></script>
-<script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-<script src="../JS/app.js" type="module"></script>
+        <section id="divResumeViewer" class="hidden py-6">
+            <div class="mb-4 flex items-center justify-between gap-4 print:hidden">
+                <h1 class="text-2xl font-bold text-primary">Resume Viewer</h1>
+                <button id="btnPrintResume" class="rounded bg-primary px-4 py-2 font-semibold text-primaryText hover:bg-red-950">Print or Save PDF</button>
+            </div>
+            <div id="resumeViewerPreview"></div>
+        </section>
+    </main>
 
+    <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="/node_modules/quill/dist/quill.js"></script>
+    <script src="/JS/app.js"></script>
 </body>
 </html>
