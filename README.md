@@ -9,8 +9,8 @@ My notes:
 npx tailwindcss -i input.css -o output.css --watch
 
 My use of AI:
-I did not use AI in the beginning and I wish that I had. I procrastinated hard, so by the end I let cursor take my draft and make it work. 
-I then read through everything and thankfully could understand it. Below I shared all of my prompts.
+I did not use AI in the beginning and I wish that I had. I actually worked on this for a long time, but the long time was more due to OCD than actual progress.
+I used codex in the end because I had never practiced that in class (oops). I then read through everything and could understand how it mangled the original application into something,, vaguely similar. Below I shared all of my prompts.
 
 Sharing with others:
 I wouldn't reccommend sharing with others, as it is maybe an example of what not to do. 
